@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c90420f-17e3-40c5-9445-4d69cc99a818" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/fredparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/fredparser.py" afterDir="false" />
-    </list>
+    <list default="true" id="3c90420f-17e3-40c5-9445-4d69cc99a818" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +37,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fredparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="213" column="93" selection-start-line="213" selection-start-column="93" selection-end-line="213" selection-end-column="93" />
+            <state relative-caret-position="269">
+              <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nltk.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="3" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -106,8 +113,8 @@
       <find>namelist.ap</find>
       <find>prin</find>
       <find>bio</find>
-      <find>print</find>
       <find>check</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>charDicts</replace>
@@ -132,6 +139,7 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/utility.py" />
         <option value="$PROJECT_DIR$/fredparser.py" />
+        <option value="$PROJECT_DIR$/nltk.txt" />
       </list>
     </option>
   </component>
@@ -287,12 +295,12 @@
       <option name="presentableId" value="Default" />
       <updated>1585609772750</updated>
       <workItem from="1585609774161" duration="6010000" />
-      <workItem from="1585626272781" duration="69145000" />
+      <workItem from="1585626272781" duration="69259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75155000" />
+    <option name="totallyTimeSpent" value="75269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -402,11 +410,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fredparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="213" column="93" selection-start-line="213" selection-start-column="93" selection-end-line="213" selection-end-column="93" />
+        <state relative-caret-position="269">
+          <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nltk.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
