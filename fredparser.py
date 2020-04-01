@@ -3,7 +3,7 @@ import utility as utility
 import copy
 
 from os import environ
-bearer=environ.get('FRED API TOKEN')
+bearer=environ.get('FRED_API_TOKEN')
 URL = "http://wit.istc.cnr.it/stlab-tools/fred?"
 params1 = {
     "findrelations": True,
