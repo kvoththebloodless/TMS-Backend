@@ -19,21 +19,29 @@ app = Flask("TMSBackend")
 #animfile
 #autocompletenoun - now to be taken care of at the frontend
 
-@app.route("/storyline",methods=["POST"])
+@app.route("/storyline",methods=["POST","GET"])
 def storyline():
     # _items = db.appdb.find()
     # items = [items for items in _items]
 
     #processing text to return data :{line: text, pos_line:{n:[],v:[],adj:[{n:JJ},{n:JJ}],cd:[{n:CD}],pronoun_line:text}
     #preprocess also makes sure that verbs are written with _number in the increasing order in which they appear
-    data,charDictList=utility.preprocess(request.json)
-    if data==None:
-        return jsonify({"error":"Text is empty, I wanna hear your story!"})
-    result=par.parse(data,charDictList)
+    if request.method == 'POST':
+        data,charDictList=utility.preprocess(request.json)
 
+    else:
+        line={"data":{"line":request.args.get("line")},"characterDictList":{}}
+        linejson=jsonify(line)
+
+        data, charDictList=utility.preprocess(linejson.json)
+    if data == None:
+        return jsonify({"error": "Text is empty, I wanna hear your story!"})
+    result = par.parse(data, charDictList)
     return jsonify(result)
 
-
+@app.route("/",methods=["GET"])
+def index():
+    return jsonify({"Welcome": "Just add your text in the URL like so : '/storyline?line=<Your text>' "})
 @app.route("/characteredit", methods=["POST"])
 def characterEdit():
     charDict=request.json

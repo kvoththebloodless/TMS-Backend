@@ -78,7 +78,7 @@ def parseVerbs(data, response, charDictList):
 
         prep = utility.checkForPrepositionAfterVerb(data, verb)
         if prep is not None:
-            animDict["preposition":prep]
+            animDict["preposition"]=prep
         # Mark Node as visited and add animation to list
         verbResponse["visited"] = True
         if animDict is not None:
@@ -105,7 +105,7 @@ def parseSituation(key, data, response, charDictList):
         "visited"] == True or "hasTruthValue" in situationResponse and \
             situationResponse["hasTruthValue"] == False:
         return charDictList, None
-    print("type before", type(situationResponse))
+
     if "involves" in situationResponse:
 
         # Todo: Utility function to order keys by instance tag first returns a list
@@ -115,15 +115,14 @@ def parseSituation(key, data, response, charDictList):
                 namelist.extend(names)
 
     prepkey = utility.checkForPrepositionInKeyNonv(situationResponse)
-    print("type after", type(situationResponse))
+
     if prepkey != None:
         for field in situationResponse[prepkey]:
             charDictList, names = deepDive(field["value"], response, charDictList, data)
             if names is not None and len(names)!=0:
                 namelist.extend(names)
         for name in namelist:
-            print(name)
-            print(prepkey)
+
             charDictList[name]["prep_"+prepkey] = names
 
     situationResponse["visited"] = True
@@ -181,12 +180,12 @@ def parseAny(key, data, response, charDictList):
         return charDictList, namelist
 
     anyResponse = response[key]
-    print(anyResponse)
+
 
     if "visited" in anyResponse and anyResponse["visited"] == True or "hasTruthValue" in anyResponse and \
             anyResponse["hasTruthValue"] == False:
         return charDictList, None
-    print("yes")
+
     charDictList = parseRecursive(key, response, charDictList, key)
     return charDictList, namelist
 
