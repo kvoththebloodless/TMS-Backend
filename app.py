@@ -5,7 +5,7 @@ import utility as utility
 import TMSParser as par
 
 app = Flask("TMSBackend")
-
+app.debug = True
 # To change accordingly 
 # print(os.environ)
 # client = MongoClient(os.environ["DB_PORT_27017_TCP_ADDR"], 27017)
