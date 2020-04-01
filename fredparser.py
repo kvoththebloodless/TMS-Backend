@@ -211,7 +211,7 @@ def parseRecursive(key, response, charDictList, name):
         for field in response[key]["subClassOf"]:
             if "Person" in field["value"] or "Organism" in field["value"] or "Location" in field[
                 "value"] or "Information" in \
-                    field["value"] or "Personification" in field["value"]:
+                    field["value"] or "Personification" in field["value"] or "Event" in field:
                 charDictList[name]["bio"] = field["value"]
                 charDictList[name]["type"] = key
                 return charDictList
