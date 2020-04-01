@@ -1,5 +1,5 @@
 import nltk
-nltk.download('punkt')
+nltk.download('all')
 from nltk.stem import WordNetLemmatizer
 
 Nouns = ["NN", "NNS", "NNP", "NNPS"]
