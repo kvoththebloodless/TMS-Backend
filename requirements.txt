@@ -1,4 +1,4 @@
 certifi==2018.4.16
 Flask==1.0.2
 pymongo==3.6.1
-
+gunicorn==19.0.0
