@@ -2,6 +2,8 @@ import requests
 import utility as utility
 import copy
 
+from os import environ
+bearer=environ.get('FRED API TOKEN')
 URL = "http://wit.istc.cnr.it/stlab-tools/fred?"
 params1 = {
     "findrelations": True,
@@ -20,7 +22,7 @@ def parse(data, charDictList, charinterface):
     params1.update({"text": data["line"]})
 
     response = requests.get(url=URL, params=params1, headers={"Accept": "application/rdf+json",
-                                                              "Authorization": "Bearer a5c2a808-cc39-38e6-898d-84ab912b1e5d"})
+                                                              "Authorization": bearer})
     response = response.json()
 
     response = utility.formatFredResponse(response)
