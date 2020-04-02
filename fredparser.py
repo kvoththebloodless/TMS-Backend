@@ -16,7 +16,7 @@ params1 = {
 }
 Roles = ["Agent", "Actor", "Actor1", "Actor2", "Agent", "Beneficiary", "Experiencer", "Patient1", "Patient2",
          "Instrument", "Theme1", "Theme2", "Theme", "Location", "Attribute", "Cause", "Extent", "Stimulus", "Material",
-         "Topic", "Predicate", "Value", "Patient"]
+         "Topic", "Predicate", "Value", "Patient","Product"]
 
 
 def parse(data, charDictList, charinterface):
