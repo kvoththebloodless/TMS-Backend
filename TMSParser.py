@@ -22,7 +22,6 @@ parse the text and retrieve the character dictionaries and the animation sequenc
 def parse(data,charDictList):
     # newCharDictList,animDictList=rm.match(data,charDictList,charinterface)
     # if newCharDictList==None or animDictList==None:
-
-    newCharDictList,animDictList=fred.parse(data,charDictList,None)
-    return {"characters":newCharDictList,"animations":animDictList}
+        newCharDictList,animDictList=fred.parse(data,charDictList,None)
+        return {"characters":newCharDictList,"animations":animDictList}
 

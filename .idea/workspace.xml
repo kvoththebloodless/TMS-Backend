@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c90420f-17e3-40c5-9445-4d69cc99a818" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/nltk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nltk.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TMSParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/TMSParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fredparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/fredparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/utility.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,15 +18,15 @@
     <SUITE FILE_PATH="coverage/TMS_BACKEND$utility.coverage" NAME="utility Coverage Results" MODIFIED="1585708184024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TMS_BACKEND$fredparser.coverage" NAME="fredparser Coverage Results" MODIFIED="1585709985963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TMS_BACKEND$parser.coverage" NAME="parser Coverage Results" MODIFIED="1585710241423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TMS_BACKEND$app.coverage" NAME="app Coverage Results" MODIFIED="1585720741601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TMS_BACKEND$app.coverage" NAME="app Coverage Results" MODIFIED="1585807530835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-947">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="175">
+              <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -30,11 +34,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="11" selection-start-column="11" selection-end-column="11" />
+            <state relative-caret-position="269">
+              <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fredparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+            <state relative-caret-position="259">
+              <caret line="206" selection-start-line="206" selection-end-line="206" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -51,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nltk.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -64,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -72,8 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TMSParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+            <state>
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -106,8 +112,6 @@
       <find>,=</find>
       <find>+</find>
       <find>'</find>
-      <find>'</find>
-      <find>'</find>
       <find>'[A-zZ]+'</find>
       <find>w3</find>
       <find>prepos</find>
@@ -115,8 +119,11 @@
       <find>namelist.ap</find>
       <find>prin</find>
       <find>bio</find>
-      <find>print</find>
       <find>check</find>
+      <find>prepo</find>
+      <find>lower</find>
+      <find>print</find>
+      <find>pri</find>
     </findStrings>
     <replaceStrings>
       <replace>charDicts</replace>
@@ -133,15 +140,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/parser.py" />
-        <option value="$PROJECT_DIR$/TMSParser.py" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/PROCFILE" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/nltk.txt" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/TMSParser.py" />
         <option value="$PROJECT_DIR$/fredparser.py" />
         <option value="$PROJECT_DIR$/utility.py" />
-        <option value="$PROJECT_DIR$/nltk.txt" />
       </list>
     </option>
   </component>
@@ -297,23 +304,25 @@
       <option name="presentableId" value="Default" />
       <updated>1585609772750</updated>
       <workItem from="1585609774161" duration="6010000" />
-      <workItem from="1585626272781" duration="69971000" />
+      <workItem from="1585626272781" duration="70571000" />
+      <workItem from="1585780100223" duration="467000" />
+      <workItem from="1585804289542" duration="4627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75981000" />
+    <option name="totallyTimeSpent" value="81675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -335,9 +344,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mongointerface.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/json/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -359,30 +365,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TMSParser.py">
+    <entry file="file://$PROJECT_DIR$/Dockerfile" />
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml" />
+    <entry file="file://$PROJECT_DIR$/nltk.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -393,10 +388,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mongointerface.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMSParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-947">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state relative-caret-position="175">
+          <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -405,8 +412,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fredparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+        <state relative-caret-position="259">
+          <caret line="206" selection-start-line="206" selection-end-line="206" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -415,15 +422,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utility.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nltk.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="269">
+          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

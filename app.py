@@ -70,13 +70,13 @@ def animFilEdit():
 
     return jsonify(result_anims)      
 
-# def storylinetemp(data):
-#     data, charDictList = utility.preprocess(data)
-#     if data == None:
-#         return jsonify({"error": "Text is empty, I wanna hear your story!"})
-#     result = par.parse(data, charDictList)
-#     print(result)
-#     return jsonify(result)
+def storylinetemp(data):
+    data, charDictList = utility.preprocess(data)
+    if data == None:
+        return jsonify({"error": "Text is empty, I wanna hear your story!"})
+    result = par.parse(data, charDictList)
+    print(result)
+    return jsonify(result)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
 

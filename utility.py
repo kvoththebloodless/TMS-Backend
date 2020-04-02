@@ -1,6 +1,7 @@
 import nltk
 from nltk.stem import WordNetLemmatizer
 
+lemmatizer = WordNetLemmatizer()
 Nouns = ["NN", "NNS", "NNP", "NNPS"]
 Adjectives = ["JJ", "JJR", "JJS"]
 prepositions=[ 'about' ,
@@ -136,7 +137,7 @@ def dTH(key):
 
 
 def preprocess(response):
-    lemmatizer = WordNetLemmatizer()
+
     data = response["data"]
     characterDictList = response["characterDictList"]
     temp = str(data["line"]).split(" ")
@@ -148,7 +149,7 @@ def preprocess(response):
             element = element.replace(",", " and ")
             element = element.strip()
 
-        tempstr += element.lower() + " "
+        tempstr += element + " "
 
     tempstr = tempstr.strip()
     temp = tempstr.split(" ")
@@ -188,17 +189,18 @@ def checkForPrepositionAfterVerb(data, key):
     line = data["line"].split(" ")
     pos_tags = data["pos_line"]["line"].split(" ")
     count = 0
-    print(key)
+
     index = int(key[len(key) - 1:])
 
     verb = key[0:len(key) - 2]
 
     for i in range(len(line)):
-        if verb in line[i]:
+        if verb in lemmatizer.lemmatize(line[i],"v"):
 
             count += 1
 
-            if count == index and i + 1 < len(line) and pos_tags[i + 1] == "IN":
+            if count == index and i + 1 < len(line) and( pos_tags[i + 1] == "IN" or line[i+1] in prepositions):
+
                 return line[i + 1]
     return None
 
@@ -211,10 +213,11 @@ def orderResponseByinstance(sitResp):
         else:
             orderedlist.append(tag)
     return orderedlist
-def checkForPrepositionInKeyNonv(response):
+def checkForPrepositionInKeyNonv(response,tag):
+
     for key in response:
-        print(key)
-        if key in prepositions or "situation" in key and key.replace("situation",""):
+
+        if key in prepositions or tag in key and key.replace("tag",""):
             return key
     return None
 # print(orderResponseByinstance([
