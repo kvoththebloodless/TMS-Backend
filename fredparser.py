@@ -4,7 +4,8 @@ import copy
 
 from os import environ
 
-bearer = environ.get('FRED_API_TOKEN')
+# bearer = environ.get('FRED_API_TOKEN')
+bearer = "Bearer a5c2a808-cc39-38e6-898d-84ab912b1e5d"
 URL = "http://wit.istc.cnr.it/stlab-tools/fred?"
 params1 = {
     "findrelations": True,
@@ -16,14 +17,14 @@ params1 = {
 }
 Roles = ["Agent", "Actor", "Actor1", "Actor2", "Agent", "Beneficiary", "Experiencer", "Patient1", "Patient2",
          "Instrument", "Theme1", "Theme2", "Theme", "Location", "Attribute", "Cause", "Extent", "Stimulus", "Material",
-         "Topic", "Predicate", "Value", "Patient","Product"]
+         "Topic", "Predicate", "Value", "Patient", "Product"]
 
 
 def parse(data, charDictList, charinterface):
     params1.update({"text": data["line"]})
 
     response = requests.get(url=URL, params=params1, headers={"Accept": "application/rdf+json",
-                                                              "Authorization":bearer})
+                                                              "Authorization": bearer})
     response = response.json()
 
     response = utility.formatFredResponse(response)
@@ -51,7 +52,7 @@ def parseVerbs(data, response, charDictList):
         if "visited" in response[verb] and response[verb]["visited"] == True:
             continue
         verbResponse = response[verb]
-        animDict = {"name": verb[0:len(verb) - 1], "roles": {}}
+        animDict = {"name": verb[0:len(verb) - 2], "roles": {}}
 
         for key in verbResponse:
 
@@ -62,7 +63,7 @@ def parseVerbs(data, response, charDictList):
 
                     charDictList, names = deepDive(field["value"], response, charDictList, data)
                     if names is not None and len(names) != 0:
-                        animDict["roles"][key].append(names)
+                        animDict["roles"][key].extend(names)
 
             # Does Animation have a quality?
             if key == "hasQuality":
@@ -81,11 +82,11 @@ def parseVerbs(data, response, charDictList):
 
         prep = utility.checkForPrepositionAfterVerb(data, verb)
         if prep is not None:
-            animDict["prep_"+prep] = ""
+            animDict["prep_" + prep] = ""
             if prep in verbResponse:
                 for field in verbResponse[prep]:
                     charDictList, names = deepDive(field["value"], response, charDictList, data)
-                animDict["prep_"+prep]=names
+                animDict["prep_" + prep] = names
 
         # Mark Node as visited and add animation to list
         verbResponse["visited"] = True
@@ -122,7 +123,7 @@ def parseSituation(key, data, response, charDictList):
             if names is not None and len(names) != 0:
                 namelist.extend(names)
 
-    prepkey = utility.checkForPrepositionInKeyNonv(situationResponse,key[0:len(key) - 2])
+    prepkey = utility.checkForPrepositionInKeyNonv(situationResponse, key[0:len(key) - 2])
 
     if prepkey != None:
         for field in situationResponse[prepkey]:
@@ -191,18 +192,16 @@ def parseAny(key, data, response, charDictList):
     namelist = []
     namelist.append(key)
 
+# The following condition takes care of the condition when for eg. "Mary" is not in the response, which means no further categories.
     if key not in response:
-        charDictList[key]["bio"] = ""
+        charDictList[key]["bio"] = "Person" #default bio
         charDictList[key]["type"] = key
-        namelist.append(key)
         return charDictList, namelist
-
 
     anyResponse = response[key]
 
     if "visited" in anyResponse and anyResponse["visited"] == True or "hasTruthValue" in anyResponse and \
             anyResponse["hasTruthValue"] == False:
-
         return charDictList, None
 
     charDictList = parseRecursive(key, response, charDictList, key)
@@ -211,6 +210,8 @@ def parseAny(key, data, response, charDictList):
 
 def parseRecursive(key, response, charDictList, name):
     if key not in response:
+        charDictList[name]["bio"] = "Person" #default bio
+        charDictList[name]["type"] = key
         return charDictList
     if "hasQuality" in response[key]:
         for field in response[key]["hasQuality"]:
@@ -228,7 +229,8 @@ def parseRecursive(key, response, charDictList, name):
         for field in response[key]["subClassOf"]:
             if "Person" in field["value"] or "Organism" in field["value"] or "Location" in field[
                 "value"] or "Information" in \
-                    field["value"] or "Personification" in field["value"] or "Event" in field["value"] or "PhysicalObject" in field["value"]:
+                    field["value"] or "Personification" in field["value"] or "Event" in field[
+                "value"] or "PhysicalObject" in field["value"]:
                 charDictList[name]["bio"] = field["value"]
                 charDictList[name]["type"] = key
                 return charDictList
