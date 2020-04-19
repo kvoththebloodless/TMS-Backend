@@ -1,3 +1,5 @@
+#TODO: SUPPORT FOR BOXER patient example -he%20was%20growing%20mushrooms%20in%20the%20tree%20trunk%20and%20he%20wanted%20to%20have%20them%20for%20dinner
+
 import requests
 import utility as utility
 import copy
@@ -28,7 +30,7 @@ def parse(data, charDictList, charinterface):
     response = response.json()
 
     response = utility.formatFredResponse(response)
-
+    print(response, "parsing")
     # First we parse the verbs
     animdictlist, charDictList = parseVerbs(data, response, charDictList)
     # Second we parse situation and event
@@ -184,35 +186,50 @@ def parseThere(key, data, response, charDictList):
 
 
 def parseAny(key, data, response, charDictList):
+    namelist = []
     if key not in charDictList:
         charDictList[key] = {}
 
+    namelist.append(
+        key)  # this is for appearing in the animation section of the response sent back. Even if character is not to be
+    # duplicated with another entry, the animation still needs to record a character in it's definition
+
     # else:
     #     return charDictList, None
-    namelist = []
-    namelist.append(key)
 
-# The following condition takes care of the condition when for eg. "Mary" is not in the response, which means no further categories.
-    if key not in response:
-        charDictList[key]["bio"] = "Person" #default bio
-        charDictList[key]["type"] = key
-        return charDictList, namelist
 
-    anyResponse = response[key]
-
-    if "visited" in anyResponse and anyResponse["visited"] == True or "hasTruthValue" in anyResponse and \
-            anyResponse["hasTruthValue"] == False:
-        return charDictList, None
+    # if "visited" in response[key] and response[key]["visited"] == True or "hasTruthValue" in response[key] and \
+    #         response[key]["hasTruthValue"] == False:
+    #     return charDictList,None
 
     charDictList = parseRecursive(key, response, charDictList, key)
+    # The following condition takes care of the condition when for eg. "Mary" is not in the response, which means no further categories.
+    #     if key not in response:
+    #         charDictList[key]["bio"] = "Person" #default bio
+    #         charDictList[key]["type"] = key
+    #         return charDictList, namelist
+    #
+    #     anyResponse = response[key]
+
+    #     return charDictList, None
+
+    # charDictList = parseRecursive(key, response, charDictList, key)
+    if charDictList[key]=={}:
+        del charDictList[key]
     return charDictList, namelist
 
 
 def parseRecursive(key, response, charDictList, name):
     if key not in response:
-        charDictList[name]["bio"] = "Person" #default bio
+        charDictList[name]["bio"] = "Person"  # default bio
         charDictList[name]["type"] = key
         return charDictList
+    if "visited" in response[key] and response[key]["visited"] == True or "hasTruthValue" in response[key] and \
+            response[key]["hasTruthValue"] == False:
+        return charDictList
+
+    response[key]["visited"] = True
+    print(response[key])
     if "hasQuality" in response[key]:
         for field in response[key]["hasQuality"]:
             if "descriptors" not in charDictList[name] or charDictList[name][
@@ -226,13 +243,16 @@ def parseRecursive(key, response, charDictList, name):
             else:
                 charDictList = parseRecursive(field["value"], response, charDictList, name)
     if "subClassOf" in response[key]:
-        for field in response[key]["subClassOf"]:
+        for field in response[key]["subClassOf"]:  # desired subtypes
             if "Person" in field["value"] or "Organism" in field["value"] or "Location" in field[
                 "value"] or "Information" in \
                     field["value"] or "Personification" in field["value"] or "Event" in field[
                 "value"] or "PhysicalObject" in field["value"]:
                 charDictList[name]["bio"] = field["value"]
                 charDictList[name]["type"] = key
+                return charDictList
+            elif "Quality" in field["value"]:  # undesired subtypes, extend this list to add more
+                del charDictList[name]
                 return charDictList
             else:
                 charDictList = parseRecursive(field["value"], response, charDictList, name)

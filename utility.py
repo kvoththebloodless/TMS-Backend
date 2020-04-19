@@ -159,14 +159,14 @@ def preprocess(response):
         data["pos_line"] = {}
         tempnlp = nltk.word_tokenize(data["line"])
         tempnlp = nltk.pos_tag(tempnlp)
-        finalposline = ""
+
         tempdict = {"n": [], "v": []}
 
         print(tempnlp)
         countdict= {}
         for element in range(len(tempnlp)):
 
-            finalposline += tempnlp[element][1] + " "
+
             if tempnlp[element][1] in Nouns:
                 tempdict["n"].append(temp[element])
 
@@ -179,29 +179,31 @@ def preprocess(response):
                     countdict[lemmatizer.lemmatize(temp[element], "v")]=1
                 tempdict["v"].append(lemmatizer.lemmatize(temp[element], "v") + "_" + str(countdict[lemmatizer.lemmatize(temp[element], "v")]))
 
-        finalposline = finalposline.strip()
-        data["pos_line"]["line"] = finalposline
+
+        data["pos_line"]["line"] = tempnlp
         data["pos_line"].update(tempdict)
     return data, characterDictList
 
 
 def checkForPrepositionAfterVerb(data, key):
-    line = data["line"].split(" ")
-    pos_tags = data["pos_line"]["line"].split(" ")
+
+    pos_tags = data["pos_line"]["line"]
     count = 0
 
     index = int(key[len(key) - 1:])
 
     verb = key[0:len(key) - 2]
 
-    for i in range(len(line)):
-        if verb in lemmatizer.lemmatize(line[i],"v"):
+    for i in range(len(pos_tags)):
+
+
+        if verb in lemmatizer.lemmatize(pos_tags[i][0],"v"):
 
             count += 1
 
-            if count == index and i + 1 < len(line) and( pos_tags[i + 1] == "IN" or line[i+1] in prepositions):
+            if count == index and i + 1 < len(pos_tags) and( pos_tags[i + 1] == "IN" or pos_tags[i+1][0] in prepositions):
 
-                return line[i + 1]
+                return pos_tags[i + 1][0]
     return None
 
 

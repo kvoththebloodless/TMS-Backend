@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3c90420f-17e3-40c5-9445-4d69cc99a818" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TMSParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/TMSParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fredparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/fredparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruleparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/utility.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +18,15 @@
     <SUITE FILE_PATH="coverage/TMS_BACKEND$utility.coverage" NAME="utility Coverage Results" MODIFIED="1585708184024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TMS_BACKEND$fredparser.coverage" NAME="fredparser Coverage Results" MODIFIED="1587139539917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TMS_BACKEND$parser.coverage" NAME="parser Coverage Results" MODIFIED="1585710241423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TMS_BACKEND$app.coverage" NAME="app Coverage Results" MODIFIED="1587139611209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TMS_BACKEND$app.coverage" NAME="app Coverage Results" MODIFIED="1587245216103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+            <state relative-caret-position="306">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -34,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4148">
-              <caret line="245" selection-start-line="245" selection-end-line="245" />
+            <state relative-caret-position="102">
+              <caret line="159" column="50" selection-start-line="159" selection-start-column="50" selection-end-line="159" selection-end-column="50" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -43,14 +46,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fredparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="194" column="132" selection-start-line="194" selection-start-column="132" selection-end-line="194" selection-end-column="132" />
+            <state relative-caret-position="2975">
+              <caret line="179" column="53" selection-start-line="179" selection-start-column="48" selection-end-line="179" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TMSParser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruleparser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -73,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -108,8 +129,10 @@
       <find>check</find>
       <find>prepo</find>
       <find>lower</find>
-      <find>print</find>
       <find>pri</find>
+      <find>print</find>
+      <find>&quot;pos_</find>
+      <find>&quot;pos_line&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>charDicts</replace>
@@ -131,10 +154,11 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/nltk.txt" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/TMSParser.py" />
-        <option value="$PROJECT_DIR$/utility.py" />
         <option value="$PROJECT_DIR$/fredparser.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/utility.py" />
+        <option value="$PROJECT_DIR$/TMSParser.py" />
+        <option value="$PROJECT_DIR$/ruleparser.py" />
       </list>
     </option>
   </component>
@@ -294,18 +318,20 @@
       <workItem from="1585780100223" duration="467000" />
       <workItem from="1585804289542" duration="5588000" />
       <workItem from="1587100382068" duration="604000" />
-      <workItem from="1587138444815" duration="3225000" />
+      <workItem from="1587138444815" duration="12072000" />
+      <workItem from="1587244728548" duration="2894000" />
+      <workItem from="1587329848993" duration="554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86465000" />
+    <option name="totallyTimeSpent" value="98760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13154362" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13557047" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -355,13 +381,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile" />
     <entry file="file://$PROJECT_DIR$/docker-compose.yml" />
-    <entry file="file://$PROJECT_DIR$/utility.py">
+    <entry file="file://$USER_HOME$/PycharmProjects/MiniTest/venv/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4148">
-          <caret line="245" selection-start-line="245" selection-end-line="245" />
+        <state relative-caret-position="148">
+          <caret line="1812" selection-start-line="1812" selection-end-line="1812" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fredparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="179" column="53" selection-start-line="179" selection-start-column="48" selection-end-line="179" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -372,30 +412,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongointerface.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/MiniTest/venv/Lib/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/utility.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="1812" selection-start-line="1812" selection-end-line="1812" />
+        <state relative-caret-position="102">
+          <caret line="159" column="50" selection-start-line="159" selection-start-column="50" selection-end-line="159" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TMSParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="391">
+          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruleparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -406,23 +449,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fredparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="194" column="132" selection-start-line="194" selection-start-column="132" selection-end-line="194" selection-end-column="132" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
         </state>
       </provider>
     </entry>
