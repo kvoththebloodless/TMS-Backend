@@ -6,6 +6,8 @@ import TMSParser as par
 
 app = Flask("TMSBackend")
 app.debug = True
+client= MongoClient("mongodb+srv://admin:admin123@tmsbackendcluster-o35c6.gcp.mongodb.net/test?retryWrites=true&w=majority")
+db=client.get_database('tms_db')
 # To change accordingly 
 # print(os.environ)
 # client = MongoClient(os.environ["DB_PORT_27017_TCP_ADDR"], 27017)
@@ -36,7 +38,7 @@ def storyline():
         data, charDictList=utility.preprocess(linejson.json)
     if data == None:
         return jsonify({"error": "Text is empty, I wanna hear your story!"})
-    result = par.parse(data, charDictList)
+    result = par.parse(data, charDictList,db)
     return jsonify(result)
 
 @app.route("/",methods=["GET"])

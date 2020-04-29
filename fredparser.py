@@ -30,7 +30,8 @@ def parse(data, charDictList, charinterface):
     response = response.json()
 
     response = utility.formatFredResponse(response)
-    print(response, "parsing")
+    print(data)
+    # data=utility.extractAndAddHiddenVerbs(data,response)  # Puts 'GOAT' as a verb when doing "A lion walked across the grass to eat the goat"
     # First we parse the verbs
     animdictlist, charDictList = parseVerbs(data, response, charDictList)
     # Second we parse situation and event
@@ -51,9 +52,18 @@ def parseVerbs(data, response, charDictList):
     animDictList = []
     for verb in data["pos_line"]["v"]:
 
-        if "visited" in response[verb] and response[verb]["visited"] == True:
+        # if "visited" in response[verb] and response[verb]["visited"] == True:
+        #
+        #     continue
+        #COMMENTING BECAUSE IF A VERB IS PART OF ANOTHER VERB THEN THE INNER VERB WHILE TRAVERSING THE FORMER VERB GETS SET TO VISITED AND THEN CAN'T
+        #BE PRCESSED AGAIN AS A SEPERATE VERB "He wants an ice cream" has "have"hidden verb which is the theme for "want" node
+
+
+        # response[verb]["visited"] = True
+        if verb not in response:
             continue
         verbResponse = response[verb]
+
         animDict = {"name": verb[0:len(verb) - 2], "roles": {}}
 
         for key in verbResponse:
@@ -79,10 +89,10 @@ def parseVerbs(data, response, charDictList):
                 for field in verbResponse[key]:
                     animDict["repeat"] = field["value"]
             # is there a truth value associated with the animation
-            if key == "hasTruthValue" and verbResponse[key]["value"] == False:
-                animDict = None
+            if key == "hasTruthValue" and verbResponse[key][0]["value"] == "False": # Assuming only one truth value is inside. probably true.
+                animDict["truthvalue"]="false"
 
-        prep = utility.checkForPrepositionAfterVerb(data, verb)
+        prep = utility.checkForPrepositionAfterVerb(data, verb,verbResponse)
         if prep is not None:
             animDict["prep_" + prep] = ""
             if prep in verbResponse:
@@ -91,7 +101,7 @@ def parseVerbs(data, response, charDictList):
                 animDict["prep_" + prep] = names
 
         # Mark Node as visited and add animation to list
-        verbResponse["visited"] = True
+
         if animDict is not None:
             animDictList.append(animDict)
     return animDictList, charDictList
@@ -186,6 +196,7 @@ def parseThere(key, data, response, charDictList):
 
 
 def parseAny(key, data, response, charDictList):
+
     namelist = []
     if key not in charDictList:
         charDictList[key] = {}
@@ -221,7 +232,7 @@ def parseAny(key, data, response, charDictList):
 
 def parseRecursive(key, response, charDictList, name):
     if key not in response:
-        charDictList[name]["bio"] = "Person"  # default bio
+        charDictList[name]["bio"] = "Uncatergorized"  # default bio
         charDictList[name]["type"] = key
         return charDictList
     if "visited" in response[key] and response[key]["visited"] == True or "hasTruthValue" in response[key] and \
@@ -229,7 +240,7 @@ def parseRecursive(key, response, charDictList, name):
         return charDictList
 
     response[key]["visited"] = True
-    print(response[key])
+
     if "hasQuality" in response[key]:
         for field in response[key]["hasQuality"]:
             if "descriptors" not in charDictList[name] or charDictList[name][
