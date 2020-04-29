@@ -3,11 +3,14 @@ from flask import Flask, redirect, url_for, request, jsonify
 from pymongo import MongoClient
 import utility as utility
 import TMSParser as par
-
+import json
+import animationinterface
+import ruleparser
 app = Flask("TMSBackend")
 app.debug = True
 client= MongoClient("mongodb+srv://admin:admin123@tmsbackendcluster-o35c6.gcp.mongodb.net/test?retryWrites=true&w=majority")
 db=client.get_database('tms_db')
+
 # To change accordingly 
 # print(os.environ)
 # client = MongoClient(os.environ["DB_PORT_27017_TCP_ADDR"], 27017)
@@ -32,53 +35,43 @@ def storyline():
         data,charDictList=utility.preprocess(request.json)
 
     else:
-        line={"data":{"line":request.args.get("line")},"characterDictList":{}}
+        line={"data":{"line":request.args.get("line")},"animCharDict":{}}
         linejson=jsonify(line)
 
         data, charDictList=utility.preprocess(linejson.json)
     if data == None:
         return jsonify({"error": "Text is empty, I wanna hear your story!"})
     result = par.parse(data, charDictList,db)
-    return jsonify(result)
+    return json.dumps(result,default=str)
 
 @app.route("/",methods=["GET"])
 def index():
     return jsonify({"Welcome": "Just add your text in the URL like so : '/storyline?line=<Your text>' "})
-@app.route("/characteredit", methods=["POST"])
-def characterEdit():
-    charDict=request.json
-    result_charDict=par.getCharInstance().typeLogic(charDict)
 
-    return jsonify(result_charDict)
+@app.route("/sampleanim", methods=["GET"])
+def getSampleAnim():
+    bio=request.args.get("bio")
 
-@app.route("/animedit", methods=["POST"])
-def animEdit():
-    animDict,data=utility.preprocess(request.json)
-    result_animDict=par.getAnimInstance().updateRule(animDict,data)
+    result_animDict=animationinterface.getAnimations(db,bio)
+    return json.dumps(result_animDict,default=str)
 
-    return jsonify(result_animDict)
+@app.route("/action", methods=["POST"])
+def fetchAction():
+    animCharDict=request.json
+    result_anim=animationinterface.getAction(db,animCharDict)
 
-@app.route("/animfiledit", methods=["POST"])
-def animfiledit():
-    animJson,animId,data=utility.preprocess(request.json)
-    result_anim=par.getAnimInstance().editAnimation(animJson,animId,data)
+    return json.dumps(result_anim,default=str)
 
-    return jsonify(result_anim)
+@app.route("/edit", methods=["POST"])
+def animAndRuleEdit():
+    animCharDictData=request.json
+    animCharDict=animCharDictData["animCharDict"]
+    data=animCharDictData["data"]
+    animCharDict=animationinterface.createOrUpdateAction(db,animCharDict)
+    animCharDict=ruleparser.create(animCharDict,data,db)
 
-@app.route("/animfile", methods=["POST"])
-def animFilEdit():
-    animId,data=utility.preprocess(request.json)
-    result_anims=par.getAnimInstance().getAnimations(animId,data)
+    return json.dumps(animCharDict,default=str)
 
-    return jsonify(result_anims)      
-
-def storylinetemp(data):
-    data, charDictList = utility.preprocess(data)
-    if data == None:
-        return jsonify({"error": "Text is empty, I wanna hear your story!"})
-    result = par.parse(data, charDictList)
-    print(result)
-    return jsonify(result)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
 

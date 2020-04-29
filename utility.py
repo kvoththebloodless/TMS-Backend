@@ -141,13 +141,13 @@ def ruleCreationLogic(anim,data):
      newposline=posline[0:]
      for element in range(len(posline)):
         if posline[element][1] in Verbs:
-            newposline[element] = (returnLemmatized(posline[element][0],"v"),posline[element][1])
+            newposline[element] = [returnLemmatized(posline[element][0],"v"),posline[element][1]]
         else:
-         newposline[element] = ("", posline[element][1])
+         newposline[element] = ["", posline[element][1]]
         for role in animroles:
 
             if posline[element][0] in list(map(remove_,animroles[role])):
-                newposline[element]=(role,posline[element][1])
+                newposline[element]=[role,posline[element][1]]
                 break
 
 
@@ -203,7 +203,7 @@ def extractAndAddHiddenVerbs(data, response):
 
 def preprocess(response):
     data = response["data"]
-    characterDictList = response["characterDictList"]
+    characterDictList = response["animCharDict"]
     temp = str(data["line"]).split(" ")
     tempstr = ""
 
@@ -245,6 +245,7 @@ def preprocess(response):
 
                 tempdict["v"].append(lemmatizedVerb + "_" + str(countdict[lemmatizedVerb]))
 
+        tempnlp=list(map(list,tempnlp))
         data["pos_line"]["line"] = tempnlp
         data["pos_line"].update(tempdict)
     return data, characterDictList
@@ -305,6 +306,7 @@ def returnLemmatized(word, type):
 def matchStructure(rules, posline, COMMON_PERSON_NAME, COMMON_ANIMAL):
     # Direct matching
     animlist, chardictlist = matchStructureSubfunc(rules, posline, COMMON_PERSON_NAME, COMMON_ANIMAL, False)
+
     # Try again with determiners, prepositions and everything except nouns and verbs stripped away
     if animlist == None or len(animlist) == 0:
         posline = stripPosToBareMinInLine(posline)
@@ -329,7 +331,8 @@ def stripPosToBareMinInResponse(roles):
 
 
 def matchStructureSubfunc(rules, posline, COMMON_PERSON_NAME, COMMON_ANIMAL, strip):
-    anim = {}
+    print(posline)
+    anim = {"roles":{}}
     charlist = {}
     finalrule=None
     for rule in rules :
@@ -346,7 +349,10 @@ def matchStructureSubfunc(rules, posline, COMMON_PERSON_NAME, COMMON_ANIMAL, str
                 if posline[i][1] in ruledata[i]:
                     if ruledata[i][posline[i][1]]:
                         if ruledata[i][posline[i][1]] not in anim:
-                            anim[ruledata[i][posline[i][1]]] = posline[i][0]
+                            if posline[i][1]!="v":
+                                anim["roles"][ruledata[i][posline[i][1]]]=[posline[i][0]]
+                            else:
+                                anim[ruledata[i][posline[i][1]]] = posline[i][0]
 
                         else:
                             anim[ruledata[i][posline[i][1]]].append(posline[i][0])
@@ -363,7 +369,7 @@ def matchStructureSubfunc(rules, posline, COMMON_PERSON_NAME, COMMON_ANIMAL, str
 
 
                 else:
-                    anim = {}
+                    anim = {"roles":{}}
                     charlist = {}
     anim["action_id"]=finalrule["action_id"]
     anim["rule_id"]=finalrule["_id"]
@@ -376,17 +382,17 @@ def formatPosline(posline, verb):
 
         if posline[element][1] in Nouns:
 
-            posline[element] = (posline[element][0], "NN")
+            posline[element] = [posline[element][0], "NN"]
         elif posline[element][1] in Verbs:
             lemmetized = returnLemmatized(posline[element][0], "v")
             if lemmetized != verb:
                 if posline[element][0] in ["was", "is", "were", "be"]:
-                    posline[element] = (lemmetized, "BE")
+                    posline[element] = [lemmetized, "BE"]
                 else:
-                    posline[element] = (lemmetized, "NEGV")
+                    posline[element] = [lemmetized, "NEGV"]
             else:
 
-                posline[element] = (lemmetized, "v")
+                posline[element] = [lemmetized, "v"]
 
 
     return posline

@@ -3,9 +3,10 @@ import utility
 COMMON_NAMES_PERSON = ["john", "jack", "liam", "andy", "matt", "corey", "tom", "lydia", "lindsay", "stephanie", "will",
                        "annie", "gourav", "joe", "michel", "she", "he","man","woman"]
 COMMON_ORGANISMS = ["rabbit", "rat", "unicorn", "monkey", "goat", "horse", "donkey", "sheep"]
-
+from bson.objectid import ObjectId
 
 def match(data, db):
+
     records = db.rules_collection
     animationlist = []
     charDictList = {}
@@ -16,7 +17,7 @@ def match(data, db):
         listOfrules = list(records.find({'name': verb}))
 
         posline = utility.formatPosline(posline, verb)
-
+        print("list of rules",listOfrules)
         newanimationlist, newcharDictList = utility.matchStructure(listOfrules, posline, COMMON_NAMES_PERSON,
                                                                    COMMON_ORGANISMS)
 
@@ -32,15 +33,19 @@ def create(animcharData, data, db):
     records = db.rules_collection
     animations = animcharData["animations"]
     for anim in range(len(animations)):
+        if "rule_id" in animations[anim]:
+            continue
         ruledict = utility.ruleCreationLogic(animations[anim], data)
-        print(ruledict)
-        ruledict["action_id"]=animations[anim]["action_id"]
-        id = records.insert_one(ruledict)
+        print(animations[anim])
+        ruledict["action_id"]=ObjectId(animations[anim]["action_id"])
+        id = records.insert_one(ruledict).inserted_id
 
         animcharData["animations"][anim]["rule_id"] = id
     return animcharData
     # rule={"name":anim["name"]
     #       "roles": }
+
+#TODO: UPDATE RULES?
 
 
 # animchardata = {
@@ -89,5 +94,5 @@ def create(animcharData, data, db):
 #     "line": [('The', 'DET'), ('lion', 'NN'), ('walked', 'VBD'), ('across','IN'),('The', 'DT'), ('grass', 'NN'),
 #              ('to', 'IN'), ('eat', 'VBN'),('the','DET'),('goat','NN')],
 #     "v": ["walk_1", "eat_1"]}}, db))
-#
+
 # def addRule(data,animationDict)
