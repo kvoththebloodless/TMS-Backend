@@ -43,51 +43,51 @@ def create(animcharData, data, db):
     #       "roles": }
 
 
-animchardata = {
-    "animations": [
-        {   "action_id":"123123123",
-            "name": "walk",
-            "prep_across": "",
-            "roles": {
-                "Location": [
-                    "grass_1"
-                ],
-                "Theme": [
-                    "lion_1"
-                ]
-            }
-        },
-        {   "action_id":"123123123",
-            "name": "eat",
-            "roles": {
-                "Agent": [
-                    "lion_1"
-                ],
-                "Patient": [
-                    "goat_1"
-                ]
-            }
-        }
-    ],
-    "characters": {
-        "goat_1": {
-            "bio": "Organism",
-            "type": "Goat"
-        },
-        "grass_1": {
-            "bio": "Organism",
-            "type": "Grass"
-        },
-        "lion_1": {
-            "bio": "Organism",
-            "type": "Lion"
-        }
-    }
-}
-
-print(match( {"pos_line": {
-    "line": [('The', 'DET'), ('lion', 'NN'), ('walked', 'VBD'), ('across','IN'),('The', 'DT'), ('grass', 'NN'),
-             ('to', 'IN'), ('eat', 'VBN'),('the','DET'),('goat','NN')],
-    "v": ["walk_1", "eat_1"]}}, db))
+# animchardata = {
+#     "animations": [
+#         {   "action_id":"123123123",
+#             "name": "walk",
+#             "prep_across": "",
+#             "roles": {
+#                 "Location": [
+#                     "grass_1"
+#                 ],
+#                 "Theme": [
+#                     "lion_1"
+#                 ]
+#             }
+#         },
+#         {   "action_id":"123123123",
+#             "name": "eat",
+#             "roles": {
+#                 "Agent": [
+#                     "lion_1"
+#                 ],
+#                 "Patient": [
+#                     "goat_1"
+#                 ]
+#             }
+#         }
+#     ],
+#     "characters": {
+#         "goat_1": {
+#             "bio": "Organism",
+#             "type": "Goat"
+#         },
+#         "grass_1": {
+#             "bio": "Organism",
+#             "type": "Grass"
+#         },
+#         "lion_1": {
+#             "bio": "Organism",
+#             "type": "Lion"
+#         }
+#     }
+# }
+#
+# print(match( {"pos_line": {
+#     "line": [('The', 'DET'), ('lion', 'NN'), ('walked', 'VBD'), ('across','IN'),('The', 'DT'), ('grass', 'NN'),
+#              ('to', 'IN'), ('eat', 'VBN'),('the','DET'),('goat','NN')],
+#     "v": ["walk_1", "eat_1"]}}, db))
 #
 # def addRule(data,animationDict)

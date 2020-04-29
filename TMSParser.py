@@ -23,11 +23,9 @@ def getAnimInstance():
 parse the text and retrieve the character dictionaries and the animation sequences
 '''
 def parse(data,charDictList,db):
-    newCharDictList=None
-    animDictList=None
     print("data",data)
-    # newCharDictList,animDictList=rm.match(data,charDictList,db)
-    if newCharDictList==None or animDictList==None:
+    newCharDictList,animDictList=rm.match(data,charDictList,db)
+    if newCharDictList==None or animDictList==None or (len(newCharDictList)==0 and len(animDictList)==0):
         newCharDictList,animDictList=fred.parse(data,charDictList,None)
     return {"characters":newCharDictList,"animations":animDictList}
 
