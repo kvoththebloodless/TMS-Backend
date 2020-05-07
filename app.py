@@ -8,7 +8,7 @@ import animationinterface
 import ruleparser
 app = Flask("TMSBackend")
 app.debug = True
-client= MongoClient("mongodb+srv://admin:admin123@tmsbackendcluster-o35c6.gcp.mongodb.net/test?retryWrites=true&w=majority")
+client= MongoClient("MONGO_ATLAS_URL")
 db=client.get_database('tms_db')
 
 # To change accordingly 
