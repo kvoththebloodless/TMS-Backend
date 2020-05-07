@@ -7,7 +7,7 @@ import copy
 from os import environ
 
 # bearer = environ.get('FRED_API_TOKEN')
-bearer = "Bearer a5c2a808-cc39-38e6-898d-84ab912b1e5d"
+bearer = "API_TOKEN"
 URL = "http://wit.istc.cnr.it/stlab-tools/fred?"
 params1 = {
     "findrelations": True,
